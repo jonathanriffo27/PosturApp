@@ -26,16 +26,14 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Uncomment and set secrets in repository settings:
-      # - VERCEL_TOKEN, VERCEL_ORG_ID
-      # - name: Deploy to Vercel
-      #   uses: amondnet/vercel-action@v25
-      #   with:
-      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-      #     vercel-args: '--prod'
-      #     github-comment: false
+      - name: Deploy to Vercel Preview
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          github-comment: false
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -62,12 +60,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Uncomment after setting up Vercel project
-      # - name: Deploy to Vercel Production
-      #   uses: amondnet/vercel-action@v25
-      #   with:
-      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-      #     vercel-args: '--prod'
-      #     production: true
+      - name: Deploy to Vercel Production
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          production: true
