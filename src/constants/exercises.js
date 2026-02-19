@@ -34,7 +34,7 @@ export const EXERCISES = [
     {
         id: 'wall-angels',
         name: 'Wall Angels (Ángeles en Pared)',
-        type: 'Mobility',
+        type: 'Strengthen',
         target: 'Weaks',
         duration: 60,
         instructions: 'Párate con la espalda, cabeza y glúteos apoyados en una pared. Coloca los brazos en forma de "W" (codos doblados, dorso de las manos tocando la pared). Desliza los brazos hacia arriba hasta formar una "Y" sin despegar ninguna parte del cuerpo de la pared.',
@@ -42,7 +42,7 @@ export const EXERCISES = [
     {
         id: 'bruegger-relief',
         name: 'Maniobra de Bruegger',
-        type: 'Reset',
+        type: 'Strengthen',
         target: 'Weaks',
         duration: 30,
         instructions: 'Siéntate al borde de la silla. Separa las piernas y rota los pies hacia afuera. Abre los brazos y gíralos externamente (palmas hacia arriba y pulgares atrás). Baja los hombros, junta las escápulas suavemente y alarga el cuello ("doble mentón") mientras respiras profundamente.',
@@ -50,7 +50,7 @@ export const EXERCISES = [
     {
         id: 'thoracic-rotation-seated',
         name: 'Rotación Torácica Sentado',
-        type: 'Mobility',
+        type: 'Stretch',
         target: 'Tights',
         duration: 45,
         instructions: 'Sentado erguido, cruza los brazos sobre el pecho o coloca una mano en el respaldo de la silla. Gira el tronco suavemente hacia un lado, manteniendo las caderas fijas mirando al frente. Exhala mientras giras para ganar rango.',
