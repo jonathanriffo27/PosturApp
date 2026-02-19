@@ -6,7 +6,7 @@ export const EXERCISES = [
         type: 'Stretch',
         target: 'Tights',
         duration: 60,
-        instructions: 'Párate frente a una esquina o marco de puerta. Coloca los antebrazos en las paredes con los codos a la altura de los hombros. Da un paso adelante suavemente hasta sentir el estiramiento en el pecho.',
+        instructions: 'Coloca antebrazos en el marco con codos a 90°. Da un paso adelante proyectando el esternón. Mantén el abdomen contraído para evitar arquear la zona lumbar.',
     },
     {
         id: 'trap-stretch',
@@ -14,7 +14,7 @@ export const EXERCISES = [
         type: 'Stretch',
         target: 'Tights',
         duration: 60,
-        instructions: 'Sentado con la espalda recta, lleva tu oreja derecha hacia el hombro derecho. Mantén el hombro izquierdo abajo. Repite para el otro lado a la mitad del tiempo.',
+        instructions: 'Lleva la oreja hacia el hombro sin rotar la cabeza. Presiona activamente el hombro opuesto hacia el suelo para maximizar la descompresión. Mantén la mirada al frente.',
     },
     {
         id: 'chin-tucks',
@@ -22,7 +22,7 @@ export const EXERCISES = [
         type: 'Strengthen',
         target: 'Weaks',
         duration: 60,
-        instructions: 'Sentado con buena postura, retrae la barbilla hacia atrás sin inclinar la cabeza hacia arriba o abajo. Debes sentir que la nuca se alarga y se forma una "doble barbilla".',
+        instructions: 'Desliza la barbilla hacia atrás horizontalmente, alargando la nuca. Mantén la mirada nivelada; evita inclinar la cabeza. Imagina que un hilo tira de tu coronilla hacia el techo.',
     },
     {
         id: 'scapular-squeezes',
@@ -30,7 +30,7 @@ export const EXERCISES = [
         type: 'Strengthen',
         target: 'Weaks',
         duration: 60,
-        instructions: 'Sienta o párate derecho. Imagina que intentas apretar un lápiz entre tus omóplatos, llevándolos hacia atrás y hacia abajo. Mantén los hombros relajados.',
+        instructions: 'Junta los omóplatos hacia atrás y hacia abajo (hacia los bolsillos traseros). Mantén los hombros lejos de las orejas y evita proyectar las costillas hacia adelante.',
     },
     {
         id: 'wall-angels',
