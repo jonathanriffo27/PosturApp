@@ -1,11 +1,12 @@
 export const EXERCISES = [
+    // Todos los ejercicios clasificados como Stretch (tónicos) o Strengthen (fásicos) para visualización en Dashboard
     {
         id: 'chest-stretch',
         name: 'Estiramiento Pectoral',
         type: 'Stretch',
         target: 'Tights',
         duration: 60,
-        instructions: 'Párate frente a una esquina o marco de puerta. Coloca los antebrazos en las paredes con los codos a la altura de los hombros. Da un paso adelante suavemente hasta sentir el estiramiento en el pecho.',
+        instructions: 'Coloca antebrazos en el marco con codos a 90°. Da un paso adelante proyectando el esternón. Mantén el abdomen contraído para evitar arquear la zona lumbar.',
     },
     {
         id: 'trap-stretch',
@@ -13,7 +14,7 @@ export const EXERCISES = [
         type: 'Stretch',
         target: 'Tights',
         duration: 60,
-        instructions: 'Sentado con la espalda recta, lleva tu oreja derecha hacia el hombro derecho. Mantén el hombro izquierdo abajo. Repite para el otro lado a la mitad del tiempo.',
+        instructions: 'Lleva la oreja hacia el hombro sin rotar la cabeza. Presiona activamente el hombro opuesto hacia el suelo para maximizar la descompresión. Mantén la mirada al frente.',
     },
     {
         id: 'chin-tucks',
@@ -21,7 +22,7 @@ export const EXERCISES = [
         type: 'Strengthen',
         target: 'Weaks',
         duration: 60,
-        instructions: 'Sentado con buena postura, retrae la barbilla hacia atrás sin inclinar la cabeza hacia arriba o abajo. Debes sentir que la nuca se alarga y se forma una "doble barbilla".',
+        instructions: 'Desliza la barbilla hacia atrás horizontalmente, alargando la nuca. Mantén la mirada nivelada; evita inclinar la cabeza. Imagina que un hilo tira de tu coronilla hacia el techo.',
     },
     {
         id: 'scapular-squeezes',
@@ -29,6 +30,54 @@ export const EXERCISES = [
         type: 'Strengthen',
         target: 'Weaks',
         duration: 60,
-        instructions: 'Sienta o párate derecho. Imagina que intentas apretar un lápiz entre tus omóplatos, llevándolos hacia atrás y hacia abajo. Mantén los hombros relajados.',
+        instructions: 'Junta los omóplatos hacia atrás y hacia abajo (hacia los bolsillos traseros). Mantén los hombros lejos de las orejas y evita proyectar las costillas hacia adelante.',
+    },
+    {
+        id: 'wall-angels',
+        name: 'Wall Angels (Ángeles en Pared)',
+        type: 'Strengthen',
+        target: 'Weaks',
+        duration: 60,
+        instructions: 'Párate con la espalda, cabeza y glúteos apoyados en una pared. Coloca los brazos en forma de "W" (codos doblados, dorso de las manos tocando la pared). Desliza los brazos hacia arriba hasta formar una "Y" sin despegar ninguna parte del cuerpo de la pared.',
+    },
+    {
+        id: 'bruegger-relief',
+        name: 'Maniobra de Bruegger',
+        type: 'Strengthen',
+        target: 'Weaks',
+        duration: 30,
+        instructions: 'Siéntate al borde de la silla. Separa las piernas y rota los pies hacia afuera. Abre los brazos y gíralos externamente (palmas hacia arriba y pulgares atrás). Baja los hombros, junta las escápulas suavemente y alarga el cuello ("doble mentón") mientras respiras profundamente.',
+    },
+    {
+        id: 'thoracic-rotation-seated',
+        name: 'Rotación Torácica Sentado',
+        type: 'Stretch',
+        target: 'Tights',
+        duration: 45,
+        instructions: 'Sentado erguido, cruza los brazos sobre el pecho o coloca una mano en el respaldo de la silla. Gira el tronco suavemente hacia un lado, manteniendo las caderas fijas mirando al frente. Exhala mientras giras para ganar rango.',
+    },
+    {
+        id: 'waiter-rotation',
+        name: 'Rotación Externa (El Camarero)',
+        type: 'Strengthen',
+        target: 'Weaks',
+        duration: 60,
+        instructions: 'Pega los codos a tus costados doblados a 90 grados, palmas hacia arriba. Imagina que sostienes una bandeja. Sin despegar los codos del cuerpo, gira las manos hacia afuera lo máximo posible, sintiendo la contracción en la parte posterior de los hombros.',
+    },
+    {
+        id: 'seated-pigeon',
+        name: 'Estiramiento de la Paloma Sentado',
+        type: 'Stretch',
+        target: 'Tights',
+        duration: 60,
+        instructions: 'Sentado, cruza el tobillo derecho sobre la rodilla izquierda (formando un "4"). Mantén la espalda recta e inclínate suavemente hacia adelante desde la cadera hasta sentir un estiramiento profundo en el glúteo. Cambia de pierna a la mitad del tiempo.',
+    },
+    {
+        id: 'serratus-wall-slide',
+        name: 'Deslizamiento de Antebrazos (Serrato)',
+        type: 'Strengthen',
+        target: 'Weaks',
+        duration: 60,
+        instructions: 'Coloca los antebrazos en la pared a la altura de los hombros, paralelos entre sí (puedes usar una banda elástica en las muñecas para más intensidad). Desliza los brazos hacia arriba formando una "V" mientras empujas activamente contra la pared, separando los omóplatos.',
     }
 ];
