@@ -1,4 +1,5 @@
 export const EXERCISES = [
+    // Todos los ejercicios clasificados como Stretch (tónicos) o Strengthen (fásicos) para visualización en Dashboard
     {
         id: 'chest-stretch',
         name: 'Estiramiento Pectoral',
