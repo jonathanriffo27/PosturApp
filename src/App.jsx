@@ -11,6 +11,7 @@ const AppContent = () => {
   const { user, loading } = useAuth();
   const [activeExercise, setActiveExercise] = useState(null);
   const [view, setView] = useState('dashboard'); // 'dashboard' or 'logs'
+  const [refreshKey, setRefreshKey] = useState(0); // Para forzar refresh del Dashboard
 
   if (loading) return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center">
@@ -31,6 +32,8 @@ const AppContent = () => {
           exerciseName: exercise.name,
           timestamp: serverTimestamp(),
         });
+        // Forzar refresh del Dashboard
+        setRefreshKey(prev => prev + 1);
       } catch (error) {
         console.error("Error saving completion:", error);
       }
@@ -75,7 +78,10 @@ const AppContent = () => {
           </nav>
 
           {view === 'dashboard' ? (
-            <Dashboard onStartExercise={handleStartExercise} />
+            <Dashboard 
+              key={refreshKey} 
+              onStartExercise={handleStartExercise} 
+            />
           ) : (
             <PostureLog />
           )}

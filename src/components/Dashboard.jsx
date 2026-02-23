@@ -1,11 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { EXERCISES } from '../constants/exercises';
 import { Play, CheckCircle2, Trophy, Clock } from 'lucide-react';
 import ExerciseIllustration from './ExerciseIllustration';
+import { db } from '../firebase';
+import { collection, query, where, getDocs, Timestamp } from 'firebase/firestore';
+import { useAuth } from '../context/AuthContext';
 
 const Dashboard = ({ onStartExercise }) => {
+    const { user } = useAuth();
+    const [completedToday, setCompletedToday] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     const stretches = EXERCISES.filter(ex => ex.type === 'Stretch');
     const strengthens = EXERCISES.filter(ex => ex.type === 'Strengthen');
+
+    useEffect(() => {
+        if (!user) return;
+
+        const fetchCompletedToday = async () => {
+            try {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const todayStart = Timestamp.fromDate(today);
+                
+                const todayEnd = new Date(today);
+                todayEnd.setHours(23, 59, 59, 999);
+                const todayEndTimestamp = Timestamp.fromDate(todayEnd);
+
+                const q = query(
+                    collection(db, 'completions'),
+                    where('userId', '==', user.uid),
+                    where('timestamp', '>=', todayStart),
+                    where('timestamp', '<=', todayEndTimestamp)
+                );
+
+                const snapshot = await getDocs(q);
+                const completedIds = snapshot.docs.map(doc => doc.data().exerciseId);
+                setCompletedToday(completedIds);
+            } catch (error) {
+                console.error("Error fetching completions:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCompletedToday();
+    }, [user]);
 
     return (
         <main className="max-w-6xl mx-auto p-6 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -24,11 +64,19 @@ const Dashboard = ({ onStartExercise }) => {
                     <div className="space-y-2">
                         <div className="flex justify-between text-sm">
                             <span className="text-slate-500">Ejercicios</span>
-                            <span className="font-bold text-primary">0 / 4</span>
+                            <span className="font-bold text-primary">{completedToday.length} / 4</span>
                         </div>
                         <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                            <div className="bg-primary h-full w-[0%] transition-all duration-1000"></div>
+                            <div 
+                                className="bg-primary h-full transition-all duration-1000"
+                                style={{ width: `${(completedToday.length / 4) * 100}%` }}
+                            ></div>
                         </div>
+                        {completedToday.length >= 4 && (
+                            <p className="text-xs text-green-600 font-bold text-center mt-2">
+                                🎉 ¡Objetivo cumplido!
+                            </p>
+                        )}
                     </div>
                 </div>
             </section>
@@ -42,7 +90,12 @@ const Dashboard = ({ onStartExercise }) => {
                     </div>
                     <div className="grid grid-cols-1 gap-4">
                         {stretches.map(ex => (
-                            <ExerciseCard key={ex.id} exercise={ex} onClick={() => onStartExercise(ex)} />
+                            <ExerciseCard 
+                                key={ex.id} 
+                                exercise={ex} 
+                                onClick={() => onStartExercise(ex)}
+                                isCompleted={completedToday.includes(ex.id)}
+                            />
                         ))}
                     </div>
                 </section>
@@ -54,7 +107,12 @@ const Dashboard = ({ onStartExercise }) => {
                     </div>
                     <div className="grid grid-cols-1 gap-4">
                         {strengthens.map(ex => (
-                            <ExerciseCard key={ex.id} exercise={ex} onClick={() => onStartExercise(ex)} />
+                            <ExerciseCard 
+                                key={ex.id} 
+                                exercise={ex} 
+                                onClick={() => onStartExercise(ex)}
+                                isCompleted={completedToday.includes(ex.id)}
+                            />
                         ))}
                     </div>
                 </section>
@@ -74,23 +132,42 @@ const Dashboard = ({ onStartExercise }) => {
     );
 };
 
-const ExerciseCard = ({ exercise, onClick }) => (
+const ExerciseCard = ({ exercise, onClick, isCompleted }) => (
     <button
         onClick={onClick}
-        className="bg-white group p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4 hover:border-primary/50 hover:shadow-md transition-all text-left w-full"
+        disabled={isCompleted}
+        className={`group p-4 rounded-2xl shadow-sm border flex items-center gap-4 transition-all text-left w-full ${
+            isCompleted 
+                ? 'bg-green-50 border-green-200 opacity-70' 
+                : 'bg-white border-slate-100 hover:border-primary/50 hover:shadow-md'
+        }`}
     >
         <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-slate-50 relative border border-slate-100">
             <ExerciseIllustration id={exercise.id} className="w-full h-full p-2" />
-            <div className="absolute inset-0 bg-primary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <Play className="text-primary fill-primary w-6 h-6" />
-            </div>
+            {isCompleted ? (
+                <div className="absolute inset-0 bg-green-500/20 flex items-center justify-center">
+                    <CheckCircle2 className="text-green-600 fill-green-600 w-8 h-8" />
+                </div>
+            ) : (
+                <div className="absolute inset-0 bg-primary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Play className="text-primary fill-primary w-6 h-6" />
+                </div>
+            )}
         </div>
         <div className="flex-grow min-w-0">
-            <h4 className="font-bold text-slate-800 group-hover:text-primary transition-colors truncate">{exercise.name}</h4>
+            <h4 className={`font-bold truncate ${isCompleted ? 'text-green-700' : 'text-slate-800 group-hover:text-primary'}`}>
+                {exercise.name}
+            </h4>
             <p className="text-sm text-slate-500 line-clamp-1">{exercise.instructions}</p>
             <div className="flex items-center gap-3 mt-2">
-                <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-md">60 Seg</span>
-                <CheckCircle2 className="w-4 h-4 text-slate-200" />
+                <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${
+                    isCompleted 
+                        ? 'text-green-700 bg-green-100' 
+                        : 'text-primary bg-primary/10'
+                }`}>
+                    60 Seg
+                </span>
+                <CheckCircle2 className={`w-4 h-4 ${isCompleted ? 'text-green-600' : 'text-slate-200'}`} />
             </div>
         </div>
     </button>
