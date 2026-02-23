@@ -7,7 +7,6 @@ const LoginForm = ({ onClose }) => {
     const [isSignup, setIsSignup] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [displayName, setDisplayName] = useState('');
     const [loading, setLoading] = useState(false);
     const [localError, setLocalError] = useState('');
 
@@ -18,7 +17,9 @@ const LoginForm = ({ onClose }) => {
 
         try {
             if (isSignup) {
-                await signupWithEmail(email, password, displayName || email.split('@')[0]);
+                // Auto-generar nombre del email si no se proporciona
+                const name = email.split('@')[0];
+                await signupWithEmail(email, password, name);
             } else {
                 await loginWithEmail(email, password);
             }
@@ -49,20 +50,6 @@ const LoginForm = ({ onClose }) => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    {isSignup && (
-                        <div className="relative">
-                            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                            <input
-                                type="text"
-                                placeholder="Nombre"
-                                value={displayName}
-                                onChange={(e) => setDisplayName(e.target.value)}
-                                className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                required={isSignup}
-                            />
-                        </div>
-                    )}
-
                     <div className="relative">
                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <input
@@ -79,7 +66,7 @@ const LoginForm = ({ onClose }) => {
                         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <input
                             type="password"
-                            placeholder="Contraseña"
+                            placeholder="Contraseña (mínimo 6 caracteres)"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
