@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, LogIn, UserPlus } from 'lucide-react';
 
@@ -10,21 +10,14 @@ const LoginForm = ({ onClose }) => {
     const [loading, setLoading] = useState(false);
     const [googleLoading, setGoogleLoading] = useState(false);
     const [localError, setLocalError] = useState('');
-    const dialogRef = useRef(null);
 
-    // Manejar apertura/cierre del dialog
+    // Cerrar con Escape
     useEffect(() => {
-        const dialog = dialogRef.current;
-        if (!dialog) return;
-
-        dialog.showModal();
-
-        const handleClose = () => {
-            if (onClose) onClose();
+        const handleEscape = (e) => {
+            if (e.key === 'Escape' && onClose) onClose();
         };
-
-        dialog.addEventListener('close', handleClose);
-        return () => dialog.removeEventListener('close', handleClose);
+        document.addEventListener('keydown', handleEscape);
+        return () => document.removeEventListener('keydown', handleEscape);
     }, [onClose]);
 
     const handleSubmit = async (e) => {
@@ -60,19 +53,18 @@ const LoginForm = ({ onClose }) => {
         }
     };
 
-    const handleBackdropClick = (e) => {
-        if (e.target === dialogRef.current) {
-            dialogRef.current.close();
-        }
-    };
-
     return (
-        <dialog
-            ref={dialogRef}
-            onClick={handleBackdropClick}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-transparent backdrop:bg-black/50 backdrop:backdrop-blur-sm open:animate-in open:fade-in open:zoom-in-95"
-        >
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-5 space-y-3">
+        <>
+            {/* Backdrop */}
+            <div 
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+                onClick={onClose}
+            />
+            
+            {/* Modal Container - Centrado con flex */}
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                {/* Modal Content */}
+                <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-5 space-y-3 animate-in fade-in zoom-in-95 duration-200">
                 {/* Header */}
                 <div className="text-center">
                     <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
@@ -168,13 +160,14 @@ const LoginForm = ({ onClose }) => {
 
                 {/* Cancel Button */}
                 <button
-                    onClick={() => dialogRef.current?.close()}
+                    onClick={onClose}
                     className="w-full text-slate-400 text-sm hover:text-slate-600 transition-colors font-medium"
                 >
                     Cancelar
                 </button>
+                </div>
             </div>
-        </dialog>
+        </>
     );
 };
 
