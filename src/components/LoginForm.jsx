@@ -46,30 +46,35 @@ const LoginForm = ({ onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={onClose}>
+        <>
+            {/* Backdrop */}
             <div 
-                className="bg-white rounded-2xl shadow-2xl w-full max-w-md"
-                onClick={(e) => e.stopPropagation()}
-            >
-                <div className="p-6 space-y-5">
+                className="fixed inset-0 bg-black/50 z-50"
+                onClick={onClose}
+            />
+            
+            {/* Modal */}
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+                <div 
+                    className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto pointer-events-auto"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <div className="p-5 space-y-4">
                     {/* Header */}
-                    <div className="text-center">
-                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                            {isSignup ? <UserPlus className="w-6 h-6 text-primary" /> : <LogIn className="w-6 h-6 text-primary" />}
+                    <div className="text-center mb-2">
+                        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                            {isSignup ? <UserPlus className="w-5 h-5 text-primary" /> : <LogIn className="w-5 h-5 text-primary" />}
                         </div>
-                        <h2 className="text-xl font-bold text-slate-800">
+                        <h2 className="text-lg font-bold text-slate-800">
                             {isSignup ? 'Crear Cuenta' : 'Iniciar Sesión'}
                         </h2>
-                        <p className="text-slate-500 text-xs mt-1">
-                            {isSignup ? 'Únete a PosturApp' : 'Bienvenido de nuevo'}
-                        </p>
                     </div>
 
                     {/* Google Sign-In Button */}
                     <button
                         onClick={handleGoogleLogin}
                         disabled={googleLoading}
-                        className="w-full bg-white border-2 border-slate-200 text-slate-700 py-2.5 rounded-xl font-medium hover:bg-slate-50 hover:border-slate-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                        className="w-full bg-white border border-slate-200 text-slate-700 py-2 rounded-lg font-medium hover:bg-slate-50 transition-all disabled:opacity-50 flex items-center justify-center gap-2 text-sm"
                     >
                         <svg className="w-4 h-4" viewBox="0 0 24 24">
                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -81,12 +86,12 @@ const LoginForm = ({ onClose }) => {
                     </button>
 
                     {/* Divider */}
-                    <div className="relative">
+                    <div className="relative my-3">
                         <div className="absolute inset-0 flex items-center">
                             <div className="w-full border-t border-slate-200"></div>
                         </div>
-                        <div className="relative flex justify-center text-[10px] uppercase">
-                            <span className="bg-white px-3 text-slate-400">o continúa con email</span>
+                        <div className="relative flex justify-center text-[10px] uppercase text-slate-400">
+                            <span className="bg-white px-2">o con email</span>
                         </div>
                     </div>
 
@@ -154,9 +159,10 @@ const LoginForm = ({ onClose }) => {
                             Cancelar
                         </button>
                     )}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
