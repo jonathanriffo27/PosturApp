@@ -46,7 +46,7 @@ const ExerciseIllustration = ({ id, className = "w-full h-full" }) => {
             </svg>
         ),
         
-        'upper-trap-stretch': (
+        'trap-stretch': (
             <svg viewBox="0 0 300 300" className={className}>
                 <rect width="300" height="300" fill="#f0fdfa" rx="16"/>
                 
@@ -188,7 +188,7 @@ const ExerciseIllustration = ({ id, className = "w-full h-full" }) => {
         
         // ============== STRENGTHEN (FÁSICOS) ==============
         
-        'shoulder-blade-squeeze': (
+        'scapular-squeezes': (
             <svg viewBox="0 0 300 300" className={className}>
                 <rect width="300" height="300" fill="#f0fdfa" rx="16"/>
                 
@@ -392,6 +392,239 @@ const ExerciseIllustration = ({ id, className = "w-full h-full" }) => {
                 
                 <defs>
                     <marker id="arrowDown" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <path d="M 5 0 L 10 10 L 0 10 Z" fill="#14b8a6"/>
+                    </marker>
+                </defs>
+            </svg>
+        ),
+        
+        // ============== EJERCICIOS FALTANTES ==============
+        
+        'wall-angels': (
+            <svg viewBox="0 0 300 300" className={className}>
+                <rect width="300" height="300" fill="#f0fdfa" rx="16"/>
+                
+                <g transform="translate(50, 40)">
+                    {/* Pared */}
+                    <rect x="170" y="40" width="30" height="180" fill="#0d9488" opacity="0.3"/>
+                    <line x1="175" y1="40" x2="175" y2="220" stroke="#0d9488" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
+                    
+                    {/* Cuerpo de espaldas */}
+                    <ellipse cx="100" cy="140" rx="45" ry="65" fill="#0d9488" opacity="0.3"/>
+                    
+                    {/* Cabeza */}
+                    <circle cx="100" cy="65" r="28" fill="#0d9488" opacity="0.8"/>
+                    <circle cx="93" cy="60" r="4" fill="#14b8a6"/>
+                    <circle cx="101" cy="60" r="4" fill="#14b8a6"/>
+                    
+                    {/* Brazos en W */}
+                    <path d="M 125 90 L 165 70" stroke="#0d9488" strokeWidth="9" strokeLinecap="round" fill="none"/>
+                    <path d="M 125 110 L 165 130" stroke="#0d9488" strokeWidth="9" strokeLinecap="round" fill="none"/>
+                    <circle cx="165" cy="70" r="9" fill="#0d9488" opacity="0.6"/>
+                    <circle cx="165" cy="130" r="9" fill="#0d9488" opacity="0.6"/>
+                    
+                    {/* Flecha movimiento arriba */}
+                    <path d="M 165 70 L 165 50" stroke="#14b8a6" strokeWidth="3" markerEnd="url(#arrowUp)" fill="none"/>
+                </g>
+                
+                <text x="150" y="270" textAnchor="middle" fill="#0d9488" fontSize="14" fontWeight="bold">Brazos en W, deslizar arriba</text>
+                
+                <defs>
+                    <marker id="arrowUp" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <path d="M 5 0 L 10 10 L 0 10 Z" fill="#14b8a6"/>
+                    </marker>
+                </defs>
+            </svg>
+        ),
+        
+        'bruegger-relief': (
+            <svg viewBox="0 0 300 300" className={className}>
+                <rect width="300" height="300" fill="#f0fdfa" rx="16"/>
+                
+                <g transform="translate(50, 50)">
+                    {/* Silla */}
+                    <rect x="70" y="140" width="60" height="50" fill="#0d9488" opacity="0.2"/>
+                    <rect x="65" y="120" width="10" height="70" fill="#0d9488" opacity="0.3"/>
+                    
+                    {/* Cuerpo sentado */}
+                    <ellipse cx="100" cy="110" rx="40" ry="50" fill="#0d9488" opacity="0.3"/>
+                    
+                    {/* Cabeza */}
+                    <circle cx="100" cy="60" r="28" fill="#0d9488" opacity="0.8"/>
+                    <circle cx="93" cy="55" r="4" fill="#14b8a6"/>
+                    <circle cx="101" cy="55" r="4" fill="#14b8a6"/>
+                    
+                    {/* Brazos abiertos rotados externamente */}
+                    <path d="M 65 85 L 35 70" stroke="#0d9488" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                    <path d="M 135 85 L 165 70" stroke="#0d9488" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                    <circle cx="35" cy="70" r="8" fill="#0d9488" opacity="0.6"/>
+                    <circle cx="165" cy="70" r="8" fill="#0d9488" opacity="0.6"/>
+                    
+                    {/* Piernas separadas */}
+                    <path d="M 85 150 L 70 200" stroke="#0d9488" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                    <path d="M 115 150 L 130 200" stroke="#0d9488" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                    
+                    {/* Flechas rotación externa */}
+                    <path d="M 40 70 Q 30 80 35 90" stroke="#14b8a6" strokeWidth="3" markerEnd="url(#arrow)" fill="none"/>
+                    <path d="M 160 70 Q 170 80 165 90" stroke="#14b8a6" strokeWidth="3" markerEnd="url(#arrow)" fill="none"/>
+                </g>
+                
+                <text x="150" y="270" textAnchor="middle" fill="#0d9488" fontSize="14" fontWeight="bold">Sentado, brazos rotados fuera</text>
+                
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <path d="M 5 0 L 10 10 L 0 10 Z" fill="#14b8a6"/>
+                    </marker>
+                </defs>
+            </svg>
+        ),
+        
+        'thoracic-rotation-seated': (
+            <svg viewBox="0 0 300 300" className={className}>
+                <rect width="300" height="300" fill="#f0fdfa" rx="16"/>
+                
+                <g transform="translate(50, 50)">
+                    {/* Silla */}
+                    <rect x="70" y="140" width="60" height="50" fill="#0d9488" opacity="0.2"/>
+                    <rect x="65" y="120" width="10" height="70" fill="#0d9488" opacity="0.3"/>
+                    
+                    {/* Cuerpo sentado */}
+                    <ellipse cx="100" cy="110" rx="40" ry="50" fill="#0d9488" opacity="0.3"/>
+                    
+                    {/* Cabeza rotada */}
+                    <circle cx="115" cy="60" r="28" fill="#0d9488" opacity="0.8"/>
+                    <circle cx="108" cy="55" r="4" fill="#14b8a6"/>
+                    
+                    {/* Brazos cruzados */}
+                    <path d="M 70 95 L 130 95" stroke="#0d9488" strokeWidth="9" strokeLinecap="round" fill="none"/>
+                    
+                    {/* Flecha rotación */}
+                    <path d="M 100 35 Q 130 45 140 60" stroke="#14b8a6" strokeWidth="3" strokeDasharray="5,5" markerEnd="url(#arrow)" fill="none"/>
+                    
+                    {/* Línea caderas fijas */}
+                    <line x1="60" y1="140" x2="140" y2="140" stroke="#0d9488" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
+                </g>
+                
+                <text x="150" y="270" textAnchor="middle" fill="#0d9488" fontSize="14" fontWeight="bold">Rotar tronco, caderas fijas</text>
+                
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <path d="M 5 0 L 10 10 L 0 10 Z" fill="#14b8a6"/>
+                    </marker>
+                </defs>
+            </svg>
+        ),
+        
+        'waiter-rotation': (
+            <svg viewBox="0 0 300 300" className={className}>
+                <rect width="300" height="300" fill="#f0fdfa" rx="16"/>
+                
+                <g transform="translate(50, 50)">
+                    {/* Cuerpo */}
+                    <ellipse cx="100" cy="130" rx="45" ry="60" fill="#0d9488" opacity="0.3"/>
+                    
+                    {/* Cabeza */}
+                    <circle cx="100" cy="65" r="28" fill="#0d9488" opacity="0.8"/>
+                    <circle cx="93" cy="60" r="4" fill="#14b8a6"/>
+                    <circle cx="101" cy="60" r="4" fill="#14b8a6"/>
+                    
+                    {/* Brazos codos 90° pegados al cuerpo */}
+                    <path d="M 65 95 L 65 130" stroke="#0d9488" strokeWidth="9" strokeLinecap="round" fill="none"/>
+                    <path d="M 135 95 L 135 130" stroke="#0d9488" strokeWidth="9" strokeLinecap="round" fill="none"/>
+                    
+                    {/* Antebrazos rotados externamente (palmas arriba) */}
+                    <path d="M 65 130 L 45 130" stroke="#0d9488" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                    <path d="M 135 130 L 155 130" stroke="#0d9488" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                    <circle cx="45" cy="130" r="8" fill="#0d9488" opacity="0.6"/>
+                    <circle cx="155" cy="130" r="8" fill="#0d9488" opacity="0.6"/>
+                    
+                    {/* Flechas rotación externa */}
+                    <path d="M 50 120 Q 50 110 45 130" stroke="#14b8a6" strokeWidth="3" markerEnd="url(#arrow)" fill="none"/>
+                    <path d="M 150 120 Q 150 110 155 130" stroke="#14b8a6" strokeWidth="3" markerEnd="url(#arrow)" fill="none"/>
+                </g>
+                
+                <text x="150" y="270" textAnchor="middle" fill="#0d9488" fontSize="14" fontWeight="bold">Codos 90°, rotar fuera</text>
+                
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <path d="M 5 0 L 10 10 L 0 10 Z" fill="#14b8a6"/>
+                    </marker>
+                </defs>
+            </svg>
+        ),
+        
+        'seated-pigeon': (
+            <svg viewBox="0 0 300 300" className={className}>
+                <rect width="300" height="300" fill="#f0fdfa" rx="16"/>
+                
+                <g transform="translate(50, 50)">
+                    {/* Silla */}
+                    <rect x="60" y="140" width="80" height="50" fill="#0d9488" opacity="0.2"/>
+                    <rect x="55" y="120" width="10" height="70" fill="#0d9488" opacity="0.3"/>
+                    
+                    {/* Cuerpo sentado */}
+                    <ellipse cx="100" cy="105" rx="40" ry="45" fill="#0d9488" opacity="0.3"/>
+                    
+                    {/* Cabeza */}
+                    <circle cx="100" cy="60" r="28" fill="#0d9488" opacity="0.8"/>
+                    <circle cx="93" cy="55" r="4" fill="#14b8a6"/>
+                    <circle cx="101" cy="55" r="4" fill="#14b8a6"/>
+                    
+                    {/* Pierna cruzada (figura 4) */}
+                    <path d="M 85 140 L 115 140" stroke="#0d9488" strokeWidth="9" strokeLinecap="round" fill="none"/>
+                    <path d="M 115 140 L 135 160" stroke="#0d9488" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                    <circle cx="135" cy="160" r="9" fill="#0d9488" opacity="0.6"/>
+                    
+                    {/* Pierna de apoyo */}
+                    <path d="M 85 140 L 70 180" stroke="#0d9488" strokeWidth="8" strokeLinecap="round" fill="none"/>
+                    <circle cx="70" cy="180" r="8" fill="#0d9488" opacity="0.6"/>
+                    
+                    {/* Flecha inclinación adelante */}
+                    <path d="M 100 105 Q 100 130 100 150" stroke="#14b8a6" strokeWidth="3" markerEnd="url(#arrowDown)" fill="none"/>
+                </g>
+                
+                <text x="150" y="270" textAnchor="middle" fill="#0d9488" fontSize="14" fontWeight="bold">Tobillo sobre rodilla, inclinar</text>
+                
+                <defs>
+                    <marker id="arrowDown" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <path d="M 5 0 L 10 10 L 0 10 Z" fill="#14b8a6"/>
+                    </marker>
+                </defs>
+            </svg>
+        ),
+        
+        'serratus-wall-slide': (
+            <svg viewBox="0 0 300 300" className={className}>
+                <rect width="300" height="300" fill="#f0fdfa" rx="16"/>
+                
+                <g transform="translate(40, 40)">
+                    {/* Pared */}
+                    <rect x="180" y="40" width="30" height="180" fill="#0d9488" opacity="0.3"/>
+                    <line x1="185" y1="40" x2="185" y2="220" stroke="#0d9488" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
+                    
+                    {/* Cuerpo de frente */}
+                    <ellipse cx="100" cy="140" rx="45" ry="65" fill="#0d9488" opacity="0.3"/>
+                    
+                    {/* Cabeza */}
+                    <circle cx="100" cy="65" r="28" fill="#0d9488" opacity="0.8"/>
+                    <circle cx="93" cy="60" r="4" fill="#14b8a6"/>
+                    <circle cx="101" cy="60" r="4" fill="#14b8a6"/>
+                    
+                    {/* Antebrazos en pared */}
+                    <path d="M 125 90 L 180 90" stroke="#0d9488" strokeWidth="9" strokeLinecap="round" fill="none"/>
+                    <path d="M 125 120 L 180 120" stroke="#0d9488" strokeWidth="9" strokeLinecap="round" fill="none"/>
+                    <circle cx="180" cy="90" r="8" fill="#0d9488" opacity="0.6"/>
+                    <circle cx="180" cy="120" r="8" fill="#0d9488" opacity="0.6"/>
+                    
+                    {/* Flecha deslizamiento arriba */}
+                    <path d="M 180 90 L 180 60" stroke="#14b8a6" strokeWidth="4" markerEnd="url(#arrowUp)" fill="none"/>
+                    <path d="M 180 120 L 180 90" stroke="#14b8a6" strokeWidth="4" markerEnd="url(#arrowUp)" fill="none"/>
+                </g>
+                
+                <text x="150" y="270" textAnchor="middle" fill="#0d9488" fontSize="14" fontWeight="bold">Antebrazos en pared, deslizar</text>
+                
+                <defs>
+                    <marker id="arrowUp" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
                         <path d="M 5 0 L 10 10 L 0 10 Z" fill="#14b8a6"/>
                     </marker>
                 </defs>
