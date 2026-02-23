@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Configuración directa de Firebase (sin variables de entorno)
 const firebaseConfig = {
-  apiKey: "AIzaSyDDQT5_DGi43Igtm7VxGiUPIiOrGNxZfuM",
+  apiKey: "AIzaSyDDQT5_Dgi43Igtm7VxGiUPIiOrGNxZfuM",
   authDomain: "posturapp-4f68e.firebaseapp.com",
   projectId: "posturapp-4f68e",
   storageBucket: "posturapp-4f68e.firebasestorage.app",
