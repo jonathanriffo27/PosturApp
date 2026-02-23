@@ -70,7 +70,7 @@ const LoginForm = ({ onClose }) => {
         <dialog
             ref={dialogRef}
             onClick={handleBackdropClick}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-transparent backdrop:bg-black/50 backdrop:backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-transparent backdrop:bg-black/50 backdrop:backdrop-blur-sm open:animate-in open:fade-in open:zoom-in-95"
         >
             <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-5 space-y-3">
                 {/* Header */}
