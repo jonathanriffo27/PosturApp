@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import LoginForm from './LoginForm';
 import { LogOut, User as UserIcon, Activity } from 'lucide-react';
 
 const Header = () => {
     const { user, loginWithGoogle, logout, error } = useAuth();
+    const [showLogin, setShowLogin] = useState(false);
 
     return (
         <header className="glass sticky top-0 z-50 px-6 py-4 flex justify-between items-center shadow-sm">
@@ -35,12 +37,15 @@ const Header = () => {
                         </button>
                     </div>
                 ) : (
-                    <button
-                        onClick={loginWithGoogle}
-                        className="bg-primary text-white px-5 py-2 rounded-full font-medium active:scale-95 transition-all shadow-lg shadow-primary/20"
-                    >
-                        Iniciar Sesión
-                    </button>
+                    <>
+                        <button
+                            onClick={() => setShowLogin(true)}
+                            className="bg-primary text-white px-5 py-2 rounded-full font-medium active:scale-95 transition-all shadow-lg shadow-primary/20"
+                        >
+                            Iniciar Sesión
+                        </button>
+                        {showLogin && <LoginForm onClose={() => setShowLogin(false)} />}
+                    </>
                 )}
             </div>
 

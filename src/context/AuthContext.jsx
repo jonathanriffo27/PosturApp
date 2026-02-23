@@ -6,7 +6,10 @@ import {
     signInWithRedirect,
     getRedirectResult,
     GoogleAuthProvider,
-    signOut
+    signOut,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    updateProfile
 } from "firebase/auth";
 
 const AuthContext = createContext();
@@ -57,10 +60,37 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const loginWithEmail = async (email, password) => {
+        setError(null);
+        try {
+            const result = await signInWithEmailAndPassword(auth, email, password);
+            return result;
+        } catch (err) {
+            console.error("Firebase Email Auth Error:", err);
+            setError(err.message);
+            throw err;
+        }
+    };
+
+    const signupWithEmail = async (email, password, displayName) => {
+        setError(null);
+        try {
+            const result = await createUserWithEmailAndPassword(auth, email, password);
+            if (displayName && result.user) {
+                await updateProfile(result.user, { displayName });
+            }
+            return result;
+        } catch (err) {
+            console.error("Firebase Signup Error:", err);
+            setError(err.message);
+            throw err;
+        }
+    };
+
     const logout = () => signOut(auth);
 
     return (
-        <AuthContext.Provider value={{ user, loginWithGoogle, logout, loading, error }}>
+        <AuthContext.Provider value={{ user, loginWithGoogle, loginWithEmail, signupWithEmail, logout, loading, error }}>
             {!loading && children}
         </AuthContext.Provider>
     );
