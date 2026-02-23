@@ -72,16 +72,16 @@ const LoginForm = ({ onClose }) => {
             onClick={handleBackdropClick}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-transparent backdrop:bg-black/50 backdrop:backdrop-blur-sm"
         >
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-5 space-y-3">
                 {/* Header */}
-                <div className="text-center mb-2">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-                        {isSignup ? <UserPlus className="w-8 h-8 text-primary" /> : <LogIn className="w-8 h-8 text-primary" />}
+                <div className="text-center">
+                    <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
+                        {isSignup ? <UserPlus className="w-7 h-7 text-primary" /> : <LogIn className="w-7 h-7 text-primary" />}
                     </div>
-                    <h2 className="text-2xl font-bold text-slate-800">
+                    <h2 className="text-xl font-bold text-slate-800">
                         {isSignup ? 'Crear Cuenta' : 'Iniciar Sesión'}
                     </h2>
-                    <p className="text-slate-500 text-sm mt-1">
+                    <p className="text-slate-500 text-sm">
                         {isSignup ? 'Únete a PosturApp' : 'Ingresa tus credenciales'}
                     </p>
                 </div>
@@ -112,34 +112,34 @@ const LoginForm = ({ onClose }) => {
                 </div>
 
                 {/* Email/Password Form */}
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3">
                     <div className="relative">
-                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <input
                             type="email"
                             placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium"
+                            className="w-full pl-10 pr-4 py-2.5 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium"
                             required
                         />
                     </div>
 
                     <div className="relative">
-                        <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <input
                             type="password"
                             placeholder="Contraseña"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium"
+                            className="w-full pl-10 pr-4 py-2.5 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-medium"
                             required
                             minLength={6}
                         />
                     </div>
 
                     {(error || localError) && (
-                        <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-xl text-sm font-medium">
+                        <div className="bg-red-50 border border-red-200 text-red-600 px-3 py-2 rounded-xl text-sm font-medium">
                             {localError || error}
                         </div>
                     )}
@@ -147,7 +147,7 @@ const LoginForm = ({ onClose }) => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
+                        className="w-full bg-primary text-white py-2.5 rounded-xl font-semibold hover:bg-primary/90 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
                     >
                         {loading ? 'Cargando...' : (isSignup ? 'Crear Cuenta' : 'Iniciar Sesión')}
                     </button>
