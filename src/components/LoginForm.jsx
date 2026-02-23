@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, LogIn, UserPlus } from 'lucide-react';
 
@@ -53,7 +54,7 @@ const LoginForm = ({ onClose }) => {
         }
     };
 
-    return (
+    return createPortal(
         <>
             {/* Backdrop */}
             <div 
@@ -167,7 +168,8 @@ const LoginForm = ({ onClose }) => {
                 </button>
                 </div>
             </div>
-        </>
+        </>,
+        document.body
     );
 };
 
