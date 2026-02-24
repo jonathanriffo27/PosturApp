@@ -46,10 +46,14 @@ const ExercisePlayer = ({ exercise, onClose, onComplete }) => {
                 {/* Media Block */}
                 <div className="flex-grow bg-white flex items-center justify-center p-6 relative group bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-50 to-white">
                     <div className="relative max-w-2xl w-full h-full flex items-center justify-center p-12">
-                        <ExerciseIllustration id={exercise.id} className="w-full h-full transition-all duration-700 hover:scale-[1.05]" />
+                        <ExerciseIllustration 
+                            id={exercise.id} 
+                            media={exercise.media}
+                            className="w-full h-full transition-all duration-700 hover:scale-[1.05]" 
+                        />
                         <div className="absolute inset-x-0 -bottom-4 flex justify-center">
                             <div className="px-4 py-1 bg-primary/5 rounded-full text-[10px] font-bold text-primary/40 uppercase tracking-widest border border-primary/10">
-                                Guía Visual de Posición
+                                {exercise.media ? 'Demostración en Video' : 'Guía Visual de Posición'}
                             </div>
                         </div>
                     </div>
