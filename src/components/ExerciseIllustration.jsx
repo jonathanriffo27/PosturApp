@@ -3,19 +3,35 @@ import React from 'react';
 const ExerciseIllustration = ({ id, className = "w-full h-full", media }) => {
     // Si hay un archivo de video/media, mostrarlo en lugar del SVG
     if (media) {
-        return (
-            <div className={`${className} flex items-center justify-center`}>
-                <video
-                    src={media}
-                    className="max-w-full max-h-full rounded-2xl shadow-2xl"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    controls
-                />
-            </div>
-        );
+        // Detectar si es video o imagen por la extensión
+        const isVideo = media.endsWith('.mp4') || media.endsWith('.webm') || media.endsWith('.gif');
+        
+        if (isVideo) {
+            return (
+                <div className={`${className} flex items-center justify-center`}>
+                    <video
+                        src={media}
+                        className="max-w-full max-h-full rounded-2xl shadow-2xl"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        controls
+                    />
+                </div>
+            );
+        } else {
+            // Es imagen (jpg, png, webp, etc.)
+            return (
+                <div className={`${className} flex items-center justify-center`}>
+                    <img
+                        src={media}
+                        alt={`Demostración de ${id}`}
+                        className="max-w-full max-h-full rounded-2xl shadow-2xl object-contain"
+                    />
+                </div>
+            );
+        }
     }
     
     const illustrations = {
