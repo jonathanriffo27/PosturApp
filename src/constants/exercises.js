@@ -23,6 +23,7 @@ export const EXERCISES = [
         target: 'Weaks',
         duration: 60,
         instructions: 'Desliza la barbilla hacia atrás horizontalmente, alargando la nuca. Mantén la mirada nivelada; evita inclinar la cabeza. Imagina que un hilo tira de tu coronilla hacia el techo.',
+        media: '/chin-tuck-demo.jpg',
     },
     {
         id: 'scapular-squeezes',
