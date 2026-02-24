@@ -1,20 +1,18 @@
 import React from 'react';
 
-// Importar videos directamente para que Vite los procese
-import wallAngelsVideo from '../assets/wall-angels-demo.mp4';
-
 const ExerciseIllustration = ({ id, className = "w-full h-full", media }) => {
     // Si hay un archivo de video/media, mostrarlo en lugar del SVG
     if (media) {
         return (
             <div className={`${className} flex items-center justify-center`}>
                 <video
-                    src={wallAngelsVideo}
+                    src={media}
                     className="max-w-full max-h-full rounded-2xl shadow-2xl"
                     autoPlay
                     loop
                     muted
                     playsInline
+                    controls
                 />
             </div>
         );

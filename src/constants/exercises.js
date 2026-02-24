@@ -39,7 +39,7 @@ export const EXERCISES = [
         target: 'Weaks',
         duration: 60,
         instructions: 'Párate con la espalda, cabeza y glúteos apoyados en una pared. Coloca los brazos en forma de "W" (codos doblados, dorso de las manos tocando la pared). Desliza los brazos hacia arriba hasta formar una "Y" sin despegar ninguna parte del cuerpo de la pared.',
-        media: '/src/assets/wall-angels-demo.mp4',
+        media: '/wall-angels-demo.mp4',
     },
     {
         id: 'bruegger-relief',
